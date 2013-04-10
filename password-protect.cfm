@@ -8,7 +8,12 @@
 		create a local variable called validuser with a value of false
 		create a SESSION variable called pagename that stores the name of the current page (accessible using CGI.SCRIPT_NAME)
 	--->
-    
+    <cfif isdefined("session.validuser") eq TRUE>
+    	<cfset validuser = #session.validuser#>
+    <cfelse>
+    	<cfset validuser = false>
+        <cfset session.pagename = #cgi.SCRIPT_NAME#>
+    </cfif>
     
 </cflock>
 

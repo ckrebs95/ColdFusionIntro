@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<cfinclude template="password-protect.cfm">
 <table width="750" border="1">
   <tr> 
     <td colspan="2" valign="top"> <h2 align="center">My Movie Reviews</h2>
@@ -35,6 +36,11 @@
 	 
 </td>
     <td>
+    <cfif isdefined('url.msg')>
+    	<cfoutput>
+        	<div style="font-weight:bold; color:red;">#url.msg#</div>
+        </cfoutput>
+    </cfif>
 	<cfif NOT isDefined('FORM.formSubmitted')>
 	<p>Please select a movie to edit:</p>
 		<!--- Phase 1 - Select a movie to edit --->
@@ -62,29 +68,39 @@
 			in the SELECT statement are:  movie_id, name, movie_id, 
 			summary, release_year, runtime.
 		--->
+        <cfquery name="getonemovie" datasource="movielist">
+        	select movie_id
+            	, name
+                , summary
+                , release_year
+                , runtime
+            from movies
+            where movie_id = #form.movie_id#
+        </cfquery>
 
 	<form method="post" action="editMovie-UPDATE.cfm">
 	<cfoutput query="getONEMovie">
 	<!--- Add a hidden field for movie_id --->
+    <input type="hidden" name="movie_id" value="#form.movie_id#">
 	  <table border="1">
 		 <tr>
           <th>Movie Name</th>
-          <td><!--- Add a text field for name ---></td>
+          <td><input name="name" type="text" value="#getonemovie.name#"><!--- Add a text field for name ---></td>
         </tr>
        
 	   <tr>
           <th>Movie Summary</th>
-          <td><!--- Add a textarea box for for summary ---></td>
+          <td><textarea name="summary" type="text"><cfoutput>#getonemovie.summary#</cfoutput></textarea><!--- Add a textarea box for for summary ---></td>
         </tr>
 
 	   <tr>
           <th>Release Year</th>
-          <td><!--- Add a text field for release_year ---></td>
+          <td><input name="release_year" type="number" value="#getonemovie.release_year#"><!--- Add a text field for release_year ---></td>
         </tr>
 
 	   <tr>
           <th>Run Time</th>
-          <td><!--- Add a text field for runtime ---> minutes</td>
+          <td><input name="runtime" type="number" value="#getonemovie.runtime#"><!--- Add a text field for runtime ---> minutes</td>
         </tr>
 						
 		<tr>

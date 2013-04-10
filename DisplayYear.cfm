@@ -6,9 +6,10 @@
 --->
 <cfoutput>
 	<cfparam name="ATTRIBUTES.fieldName" default="yearField">
-	<cfset CurrentYear=Year(Now())>
+    <cfset offset=5>
+	<cfset CurrentYear=(Year(Now())-#offset#)>
 	<select name="#ATTRIBUTES.fieldName#">
-		<cfloop index="x" from="#CurrentYear#" to="#CurrentYear+5#">
+		<cfloop index="x" from="#CurrentYear#" to="#CurrentYear+(2*offset)#">
 			<option value="#x#">#x#</option>
 		</cfloop>
 	</select>

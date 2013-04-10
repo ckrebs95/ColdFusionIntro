@@ -46,13 +46,16 @@
             from #form.tablename#
             where #form.fieldname# like '%#form.searchterm#%'
         </cfquery>
-        
-        <cfdump var="#searchresults#">    
 		
 		<p>Your rsearch results appear below:</p>
 		<!---
 			Add a cfdump tag to display the results of the search
 		--->
+        <!---<cfdump var="#searchresults#">--->
+        <cfinvoke component="datadisplay" method="buildtable" returnvariable="tabletext" getdata="#searchresults#">
+        <cfoutput>
+        	#tabletext#
+        </cfoutput>
 	<cfelse>	  
 	<p>Please select which fields you would like to search on:</p>
 	<form method="post">

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<cfinclude template="password-protect.cfm">
 <table width="750" border="1">
   <tr> 
     <td colspan="2" valign="top"> <h2 align="center">My Movie Reviews</h2>
