@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_getActors" value="name:firstname;datatype:,name:lastname;datatype:,name:actor_id;datatype:" />
+</info>

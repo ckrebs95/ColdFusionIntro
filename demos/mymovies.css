@@ -1,0 +1,34 @@
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+}
+td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+.sans {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+.sansbig {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.sansbold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.sansboldbig {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+body {
+	background-color: #CCFF99;
+}
